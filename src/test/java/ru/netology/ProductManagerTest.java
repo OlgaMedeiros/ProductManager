@@ -25,17 +25,27 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearch() {   // найти по имени
-        String name = "1984";
+    public void shouldSearchByName() {   // найти книгу по имени
+        String name = "1984";   //
 
-    Product[] expected = {book1};
-    Product[] actual = manager.searchBy("1984");
+        Product[] expected = {book1};
+        Product[] actual = manager.searchBy("1984");
 
-         Assertions.assertArrayEquals(expected,actual);
-}
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
     @Test
-    public void shouldSearchNotExistProduct() {
+    public void shouldSearchByAuthor() {   // найти книгу по имени автора
+        String author = "A";
+
+        Product[] expected = {book1};
+        Product[] actual = manager.searchBy("A");
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+    @Test
+    public void shouldSearchNotExistProduct() {    //найти несуществующую книгу
         String notName = "Нет такой книги";
         Product[] expected = {};
         Product[] actual = manager.searchBy("Нет такой книги");
@@ -44,17 +54,17 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearchProducts() {
-        Product[] expected = {book2, book3};
-        Product[] actual = manager.searchBy("Сила подсозания");
-        );
+    public void shouldSearchProduct() {   // найти продукт в поиске
+        Product[] expected = {book2};
+        Product[] actual = manager.searchBy("Сила подсознания");
+
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
 
     @Test
-    public void shouldMatchesTrue() {
+    public void shouldMatchesTrue() {  // соответствие продукта согласно запроса
         boolean expected = true;
         boolean actual = manager.matches(book1, "1984");
 
@@ -63,7 +73,7 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldMatchesFalse() {
+    public void shouldMatchesFalse() {   //соответствие или нет продукта согласно запроса
         boolean expected = false;
         boolean actual = manager.matches(book1, "C");
 

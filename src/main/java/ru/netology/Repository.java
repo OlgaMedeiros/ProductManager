@@ -18,7 +18,7 @@ public class Repository {
         products = tmp;
     }
 
-    public void removeByID(int id) {   //удаляем продукт по Id
+    public void removeById(int id) {  //удаляем продукт по Id
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
@@ -31,9 +31,9 @@ public class Repository {
     }
 
     public Product[] findById(int id) {
-        for (Product item : products) {
-            if (item.getId() == id) {
-                return new Product[]{item};
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return new Product[]{product};
             }
         }
         return null;

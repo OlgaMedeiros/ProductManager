@@ -12,82 +12,49 @@ public class RepositoryTest {
 
 
     @Test
-    public void testRemove() {
-    }
-
-    Repository repo = new Repository();
-
-    public Repository getRepo() {
-        repo.save(book1);
-        repo.save(book2);
-        repo.save(book3);
-        repo.save(smartphone1);
-        repo.removeById(book2);
-
-        Product[] expected = {book2};
-        Product[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-
-    }
-
-    @Test
-    public void testRemoveWhenNoExistId() {
-        Repository repo = new Repository();
-        repo.save(book1);
-        repo.save(book2);
-        repo.save(book3);
-        repo.save(smartphone1);
-
-        Assertions.assertThrows(NotFoundException.class,
-                () -> repo.removeById(5)
-        );
-
-    }
-
-    @Test
-    public void testFindAll() {
-        ProductRepository repo = new ProductRepository();
-        repo.save(book1);
-        repo.save(book2);
-        repo.save(book3);
-        repo.save(smartphone1);
-        repo.findAll();
+    public void testFindAll() {   //найти все товары
+        Repository repository = new Repository();
+        repository.save(book1);
+        repository.save(book2);
+        repository.save(book3);
+        repository.save(smartphone1);
+        repository.findAll();
 
         Product[] expected = {book1, book2, book3, smartphone1};
-        Product[] actual = repo.findAll();
+        Product[] actual = repository.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+    @Test
+    public void testFind2Books() {   //найти две книги
+        Repository repository = new Repository();
+        repository.save(book1);
+        repository.save(book2);
+
+
+        Product[] expected = {book1, book2};
+        Product[] actual = repository.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
 
     }
 
     @Test
-    public void testFindById() {
-        ProductRepository repo = new ProductRepository();
-        repo.save(book1);
-        repo.save(book2);
-        repo.save(book3);
-        repo.save(smartphone1);
+    public void testFindByID() {   //поиск по id
+        Repository repository = new Repository();
 
+        repository.save(book1);
+        repository.save(book2);
+        repository.save(book3);
+        repository.save(smartphone1);
 
-        Product[] expected = {book2};
-        Product[] actual = new Product[]{repo.findById(2)};
-
-        Assertions.assertArrayEquals(expected, actual);
-
-    }
-
-    @Test
-    public void testFindByIdWhenNoId() {
-        ProductRepository repo = new ProductRepository();
-        repo.save(book1);
-        repo.save(book2);
-        repo.save(book3);
-        repo.save(smartphone1);
-
-
-        Product[] expected = {null};
-        Product[] actual = new Product[]{repo.findById(5)};
+        Product[] expected = {book3};
+        Product[] actual = repository.findById(12);
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    }
+
+

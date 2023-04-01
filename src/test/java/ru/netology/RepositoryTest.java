@@ -1,7 +1,7 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
 public class RepositoryTest {
@@ -78,7 +78,40 @@ public class RepositoryTest {
 
     }
 
-}
+    @Test
+    public void testRemoveAllBooks() {    // удалить все книги
+        Repository repository = new Repository();
+
+        repository.save(book1);
+        repository.save(book2);
+        repository.save(book3);
+        repository.save(smartphone1);
+        repository.removeById(book3.id);
+        repository.removeById(book2.id);
+        repository.removeById(book1.id);
+
+
+        Product[] expected = {smartphone1};
+        Product[] actual = repository.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+
+    }
+    @Test
+    public void shouldSaveZeroProducts() {   //удаление 0 продуктов
+        Repository repo = new Repository();
+
+        Product[] expected = {};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
+    }
+
+
 
 
 

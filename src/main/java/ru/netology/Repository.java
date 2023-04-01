@@ -1,6 +1,8 @@
 package ru.netology;
 
 
+import java.io.FileNotFoundException;
+
 public class Repository {
     private Product[] products = new Product[0];  //изначально в массиве Product 0 ячеек
 
@@ -19,26 +21,30 @@ public class Repository {
     }
 
     public void removeById(int id) {  //удаляем продукт по Id
+
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
             if (product.getId() != id) {
                 tmp[copyToIndex] = product;
                 copyToIndex++;
+
+
+
+                }
             }
-        }
             products = tmp;
         }
 
 
-    public Product[] findById(int id) {
-        for (Product product : products) {
-            if (product.getId() == id) {
-                return new Product[]{product};
+        public Product[] findById ( int id){
+            for (Product product : products) {
+                if (product.getId() == id) {
+                    return new Product[]{product};
+                }
             }
+            return null;
         }
-        return null;
-    }
 
-}
+    }
 

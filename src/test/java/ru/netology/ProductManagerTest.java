@@ -26,7 +26,7 @@ public class ProductManagerTest {
 
     @Test
     public void shouldSearchByName() {   // найти книгу по имени
-        String name = "1984";   //
+        String name = "1984";
 
         Product[] expected = {book1};
         Product[] actual = manager.searchBy("1984");
@@ -34,15 +34,35 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-  //
-   // @Test
-    //public void shouldSearchNotExistProduct() {    //найти несуществующую книгу
-     //   String notName = "Нет такой книги";
-     //   Product[] expected = {};
-      //  Product[] actual = manager.searchBy("Нет такой книги");
 
-       // Assertions.assertArrayEquals(expected, actual);
-  //  }
+    @Test
+    public void shouldSearchByAuthor() {   // найти книгу по имени автора
+        String author = "Орвелл";
+
+        Product[] expected = new Book[]{};
+        Product[] actual = manager.searchBy("Орвелл");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByFabricator() {   // найти книгу по производителю
+        String fabricator = "Китай";
+
+        Product[] expected = new Book[]{};
+        Product[] actual = manager.searchBy("Китай");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchNotExistProduct() {    //найти несуществующую книгу
+        String notName = "Нет такой книги";
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Нет такой книги");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
     @Test
     public void shouldSearchProduct() {   // найти продукт в поиске

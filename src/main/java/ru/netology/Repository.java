@@ -26,9 +26,10 @@ public class Repository {
                 tmp[copyToIndex] = product;
                 copyToIndex++;
             }
+        }
             products = tmp;
         }
-    }
+
 
     public Product[] findById(int id) {
         for (Product product : products) {
@@ -38,5 +39,6 @@ public class Repository {
         }
         return null;
     }
+
 }
 

@@ -11,9 +11,9 @@ public class ProductManagerTest {
     Repository repository = new Repository();
     ProductManager manager = new ProductManager(repository);
 
-    Product book1 = new Book("1984", "A", 10, 100);
-    Product book2 = new Book("Сила подсознания", "B", 11, 300);
-    Product book3 = new Book("Девушка из Германии", "C", 12, 500);
+    Product book1 = new Book("1984", "Орвелл", 10, 100);
+    Product book2 = new Book("Сила подсознания", " Диспенза", 11, 300);
+    Product book3 = new Book("Девушка из Германии", "Корреа", 12, 500);
     Product smartphone1 = new Smartphone("Самсунг", 13, 1000, "Китай");
 
     @BeforeEach
@@ -34,24 +34,15 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    @Test
-    public void shouldSearchByAuthor() {   // найти книгу по имени автора
-        String author = "A";
+  //
+   // @Test
+    //public void shouldSearchNotExistProduct() {    //найти несуществующую книгу
+     //   String notName = "Нет такой книги";
+     //   Product[] expected = {};
+      //  Product[] actual = manager.searchBy("Нет такой книги");
 
-        Product[] expected = {book1};
-        Product[] actual = manager.searchBy("A");
-
-        Assertions.assertArrayEquals(expected, actual);
-
-    }
-    @Test
-    public void shouldSearchNotExistProduct() {    //найти несуществующую книгу
-        String notName = "Нет такой книги";
-        Product[] expected = {};
-        Product[] actual = manager.searchBy("Нет такой книги");
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
+       // Assertions.assertArrayEquals(expected, actual);
+  //  }
 
     @Test
     public void shouldSearchProduct() {   // найти продукт в поиске

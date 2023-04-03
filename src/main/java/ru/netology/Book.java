@@ -8,4 +8,12 @@ public class Book extends Product {          //book - дочерний клас�
         super(id, name, price);  // все общие поля для книги и смартфона
         this.author = author;    // поле только для класса Book
     }
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
 }

@@ -9,4 +9,12 @@ public class Smartphone extends Product {    //  Smartphone - дочерний �
         super(id, name, price);       // (super-обращение к родит.классу) указываем общие поля с книгой
         this.fabricator = fabricator;   // поле относящееся только к Smartphone
     }
+
+    public String getFabricator() {
+        return fabricator;
+    }
+
+    public void setFabricator(String producer) {
+        this.fabricator = fabricator;
+    }
 }

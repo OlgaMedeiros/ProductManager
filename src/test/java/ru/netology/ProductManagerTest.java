@@ -25,7 +25,7 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearchByName() {   // найти книгу по имени
+    public void shouldSearchByName() {   // найти книгу по названию книги
         String name = "1984";
 
         Product[] expected = {book1};
@@ -91,4 +91,77 @@ public class ProductManagerTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void setId() {   // проверка соответствия по Id
+        Book book = new Book("Девушка из Германии", "Корреа", 12, 500);
+
+        book.setId(12);
+
+        int expected = 12;
+        int actual = book.getId();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setName() {    // проверка соответствия имени
+        Book book = new Book("Девушка из Германии", "Корреа", 12, 500);
+
+        book.setName("Девушка из Германии");
+
+        String expected = "Девушка из Германии";
+        String actual = book.getName();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setSmartphoneName() {    // проверка соответствия названия телефона
+        Smartphone smartphone = new Smartphone("Самсунг", 13, 1000, "Китай");
+
+        smartphone.setName("Самсунг");
+
+        String expected = "Самсунг";
+        String actual = smartphone.getName();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setSmartphoneFabricator() {    // проверка соответствия производителя
+        Smartphone smartphone = new Smartphone("Самсунг", 13, 1000, "Китай");
+
+        smartphone.setFabricator("Китай");
+
+        String expected = "Китай";
+        String actual = smartphone.getFabricator();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setPrice() {
+        Book book = new Book("Девушка из Германии", "Корреа", 12, 500);
+
+        book.setPrice(500);
+
+        int expected = 500;
+        int actual = book.getPrice();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void setAuthor() {
+        Book book = new Book("Девушка из Германии", "Корреа", 12, 500);
+
+        book.setAuthor("Пушкин");
+
+        String expected = "Пушкин";
+        String actual = book.getAuthor();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
 }

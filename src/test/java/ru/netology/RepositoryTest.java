@@ -42,6 +42,7 @@ public class RepositoryTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+
     @Test
     public void testRemove1() {    // удаление товара по номеру ID (13)
         Repository repository = new Repository();
@@ -98,6 +99,7 @@ public class RepositoryTest {
 
 
     }
+
     @Test
     public void shouldSaveZeroProducts() {   //удаление 0 продуктов
         Repository repo = new Repository();
@@ -109,7 +111,8 @@ public class RepositoryTest {
     }
 
 
-    }
+}
+
 
 
 

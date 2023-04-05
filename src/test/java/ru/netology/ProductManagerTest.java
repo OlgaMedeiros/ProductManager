@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
-
 public class ProductManagerTest {
 
     Repository repository = new Repository();
@@ -140,7 +138,7 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void setPrice() {
+    public void setPrice() {    // проверка соответствия цены
         Book book = new Book("Девушка из Германии", "Корреа", 12, 500);
 
         book.setPrice(500);
@@ -153,15 +151,61 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void setAuthor() {
+    public void setAuthor() {   // проверка соответствия автора
         Book book = new Book("Девушка из Германии", "Корреа", 12, 500);
 
-        book.setAuthor("Пушкин");
+        book.setAuthor("Корреа");
 
-        String expected = "Пушкин";
+        String expected = "Корреа";
         String actual = book.getAuthor();
 
         Assertions.assertEquals(expected, actual);
 
     }
+
+    @Test
+    public void shouldSearchBook() {   // находится один товар
+
+        Product[] expected = {book1};
+        Product[] actual = manager.searchBy("1984");
+
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchNotProduct() {  //  Отсутствие продукта
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("нет продукта");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearch2Product() {  //   поиск двух продуктов по букве
+        Product[] expected = {book2, book3};
+        Product[] actual = manager.searchBy("и");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearch1Product() {  //    поиск одного продукта по цифре
+        Product[] expected = {book1};
+        Product[] actual = manager.searchBy("8");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchProduct0() {  //  книга Пушкина не найдена
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Пушкин");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
 }
+
+
